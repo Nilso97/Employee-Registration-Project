@@ -143,6 +143,7 @@ app.delete('/employees/:name', verifyJWT, (req, res) => {
     return res.json('Successfully deleted!');
 });
 
+// Logout
 app.post('/logout', verifyJWT, (req, res) => {
     blackList.push(req.headers['x-access-token']);
     return res.end(JSON.stringify({
