@@ -68,7 +68,7 @@ app.post('/employees/registration', verifyJWT, (req, res) => {
         description
     };
 
-    employees.push(user)
+    employees.push(user);
 
     return res.json(employees);
 });
