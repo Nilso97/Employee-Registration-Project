@@ -20,9 +20,13 @@ Rodando a API:
 ![Terminal](https://user-images.githubusercontent.com/96146165/170122860-077a79d6-e578-41c8-bb95-71c27350d7ed.png)
 
 ### Testes no API Client Insomnia
-- Ao realizar o Login com os dados de Usuário (user) e senha (password), será disponibilizado automaticamente um token caso os usuário tenha permissão para acessar o sistema, caso contrário acusará um erro 401
+- Ao realizar o Login com os dados de Usuário (user) e senha (password), será disponibilizado automaticamente um token caso os usuário tenha permissão para acessar o sistema
 
 ![Token](https://user-images.githubusercontent.com/96146165/170123599-3aeef456-39ce-4abe-a38b-31d250f06588.png)
+
+Caso contrário acusará um erro 401...
+
+![error](https://user-images.githubusercontent.com/96146165/170125272-08c5388a-5ba9-4d23-b334-d55deddd076e.png)
 
 - Para o usuário poder acessar as demais rotas privadas, ele deverá com anexar o Token de autenticação junto ao cabeçalho "x-access-token" na API Client Insomnia, caso contrário ele não terá permissão para acessar as rotas para cadastrar funcionários ou listá-los...
 
