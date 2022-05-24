@@ -5,7 +5,7 @@ Recentemente comecei a estudar Autenticação de APIs Web e me deparei com JWT (
 - As rotas "/home", "/login" são públicas;
 - Já as rotas "/employees/registration", "/employees/:name", "/employees" e "/logout" são todas privadas;
 
-Para realizar a LISTAGEM (Único usuário) / ATUALIZAÇÂO / DELEÇÂO, a busca será feita através do ":name"
+Para realizar a <strong>LISTAGEM (Único usuário) / ATUALIZAÇÂO / DELEÇÂO</strong>, a busca será feita através do ":name"
 Ex: http://localhost:3000/employees/John
 
 ### JWT - Json Web Token
