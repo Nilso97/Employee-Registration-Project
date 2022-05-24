@@ -2,6 +2,12 @@
 
 Recentemente comecei a estudar Autenticação de APIs Web e me deparei com JWT (Json Web Token), então resolvi fazer esse projetinho simples mesmo, somente para estudos...
 
+- As rotas "/home", "/login" são públicas;
+- Já as rotas "/employees/registration", "/employees/:name", "/employees" e "/logout" são todas privadas;
+
+Para realizar a LISTAGEM (Único usuário) / ATUALIZAÇÂO / DELEÇÂO, a busca será feita através do ":name"
+Ex: http://localhost:3000/employees/John
+
 ### JWT - Json Web Token
 O JSON Web Token é um padrão da Internet para a criação de dados com assinatura opcional e/ou criptografia cujo payload contém o JSON que afirma algum número de declarações. Os tokens são assinados usando um segredo privado ou uma chave pública/privada.
 
