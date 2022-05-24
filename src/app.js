@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 const employees = [ /* Fake DataBase */ ];
 
-const SECRET = '159753';
+const SECRET = '******';
 
 async function verifyJWT(req, res, next) {
     const token = await req.headers['x-access-token'];
