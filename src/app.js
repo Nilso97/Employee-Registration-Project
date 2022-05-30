@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const app = express();
 
@@ -8,14 +9,14 @@ app.use(bodyParser.json());
 
 const employees = [ /* Fake DataBase */ ];
 
-const SECRET = '******';
+const SECRET_KEY = process.env.SECRET_KEY;
 
 async function verifyJWT(req, res, next) {
     const token = await req.headers['x-access-token'];
     const index = blackList.findIndex(item => item === token);
     if (index !== -1) return res.status(401).end();
 
-    jwt.verify(token, SECRET, (err, decoded) => {
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) return res.status(401).end();
 
         req.userId = decoded.userId;
@@ -24,9 +25,9 @@ async function verifyJWT(req, res, next) {
 }
 
 // Página principal
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.json({
-        message: 'HOME PAGE - Company Employee Registration'
+        message: 'Bem-vindo ao Sistema de Cadastro de Funcionários!'
     });
 });
 
@@ -35,7 +36,7 @@ app.post('/login', (req, res) => {
     if (req.body.user === 'admin' && req.body.password === '1234') {
         const token = jwt.sign({
             userId: 1
-        }, SECRET, {
+        }, SECRET_KEY, {
             expiresIn: 300
         });
         return res.json({
@@ -81,7 +82,7 @@ app.get('/employees/:name', verifyJWT, (req, res) => {
 
     const search = employees.find((search) => search.first_name === name);
 
-    if (!search) return res.status(401).json('Employee does not exist!');
+    if (!search) return res.status(401).json('Funcionário não encontrado!');
 
     return res.json(search);
 });
@@ -116,7 +117,7 @@ app.patch('/employees/:name', verifyJWT, (req, res) => {
 
     const update = employees.find((update) => update.first_name === name);
 
-    if (!update) return res.status(401).json('Employee does not exist!');
+    if (!update) return res.status(401).json('Funcionário não encontrado!');
 
     update.id = id ? id : update.id;
     update.first_name = first_name ? first_name : update.first_name;
@@ -138,7 +139,7 @@ app.delete('/employees/:name', verifyJWT, (req, res) => {
 
     employees.splice(name, 1);
 
-    if (!deleteEmployee) return res.status(404).json('Employee does not exist!');
+    if (!deleteEmployee) return res.status(404).json('Funcionário não encontrado!');
 
     return res.json('Successfully deleted!');
 });
@@ -147,7 +148,7 @@ app.delete('/employees/:name', verifyJWT, (req, res) => {
 app.post('/logout', verifyJWT, (req, res) => {
     blackList.push(req.headers['x-access-token']);
     return res.end(JSON.stringify({
-        message: 'disconnected user! back to login to login again...'
+        message: 'Desconectado com sucesso!'
     }));
 });
 
