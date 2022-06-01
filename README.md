@@ -23,7 +23,7 @@ ou
 Rodando a API:
 -- nodemon src/app.js
 
-![bash](https://user-images.githubusercontent.com/96146165/171476698-b33e561e-4449-48e0-84aa-7b14cb192378.png)
+![bash](https://user-images.githubusercontent.com/96146165/171494132-7badb183-d71a-4b07-b2e1-50fd2346627f.png)
 
 ### Testes no API Client Insomnia
 - A primeira rota Pública será a Home Page do Sistema:
