@@ -23,21 +23,39 @@ ou
 Rodando a API:
 -- nodemon src/app.js
 
-![Terminal](https://user-images.githubusercontent.com/96146165/170122860-077a79d6-e578-41c8-bb95-71c27350d7ed.png)
+![bash](https://user-images.githubusercontent.com/96146165/171476698-b33e561e-4449-48e0-84aa-7b14cb192378.png)
 
 ### Testes no API Client Insomnia
+- A primeira rota Pública será a Home Page do Sistema:
+
+![Home Page](https://user-images.githubusercontent.com/96146165/171482160-5e7179a8-6b10-40a7-a27a-95f0c93fdcde.png)
+
 - Ao realizar o Login com os dados de Usuário (user) e senha (password), será disponibilizado automaticamente um token caso os usuário tenha permissão para acessar o sistema
 
-![Token](https://user-images.githubusercontent.com/96146165/170123599-3aeef456-39ce-4abe-a38b-31d250f06588.png)
+![Login - Token](https://user-images.githubusercontent.com/96146165/171476785-404059c0-aab6-449a-92a8-344c23a949ad.png)
 
-Caso contrário acusará um erro 401...
+Caso contrário acusará um erro 401 - Usuário não tem autorização para acessar essa rota...
 
-![error](https://user-images.githubusercontent.com/96146165/170125272-08c5388a-5ba9-4d23-b334-d55deddd076e.png)
+![Erro - Token](https://user-images.githubusercontent.com/96146165/171476829-06c98b92-645b-4e5a-b12d-fe4d009e1917.png)
 
 - Para o usuário poder acessar as demais rotas privadas, ele deverá com anexar o Token de autenticação junto ao cabeçalho "x-access-token" na API Client Insomnia, caso contrário ele não terá permissão para acessar as rotas para cadastrar funcionários ou listá-los...
 
-![Token 2](https://user-images.githubusercontent.com/96146165/170124434-f58c7637-f11e-44c8-a052-c279609989fd.png)
+![Inserir Token](https://user-images.githubusercontent.com/96146165/171476898-b8c5abef-04d4-4e52-b9e0-ec5910145d3d.png)
+
+- Usuário Registrado com sucesso!!!
+
+![Registrado](https://user-images.githubusercontent.com/96146165/171482627-8d535762-5fb0-494f-8093-43d5dd27217d.png)
+
+- Caso queira deletar algum usuário, precisará fazer a busca pelo "Primeiro nome" do usuário...
+Ex: /John
+
+![Deletado com sucesso](https://user-images.githubusercontent.com/96146165/171482739-d8bca5f6-5bce-47bf-a95a-3df6ec0a3172.png)
+
+- Se o usuário não foi cadastrado anteriormente no Sistema ou seja não consta na lista de "usuários cadastrados" será exibido uma mensagem na tela:
+
+![Erro - Funcionário não encontrado](https://user-images.githubusercontent.com/96146165/171484011-746e8ec1-50d8-4e24-9104-4f21e0c3bb8d.png)
 
 - Após o usuário realizar o Logout ele será disconectado e não terá mais acesso à nenhuma das rotas da API, para ele ter seu acesso concedido novamente ele deverá realizar todo o processo de Login lovamente...
 
-![Logout](https://user-images.githubusercontent.com/96146165/170124682-aa3c1cd0-f97b-43e0-96ae-b8aed164ba71.png)
+![Logout](https://user-images.githubusercontent.com/96146165/171478326-9e93a0a3-0432-4ffb-81e1-883d310ce1e9.png)
+
