@@ -1,4 +1,4 @@
-## API Rest desenvolvida em Node.js - Cadastro de Funcionários  👨‍💻 👨‍🔧 👩‍🔧
+### Cadastro de Funcionários  👨‍💻 👨‍🔧 👩‍🔧
 
 Recentemente comecei a estudar Autenticação de APIs Web e me deparei com JWT (Json Web Token), então resolvi fazer esse projetinho simples mesmo, somente para estudos...
 
