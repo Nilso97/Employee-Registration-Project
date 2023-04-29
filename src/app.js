@@ -7,13 +7,18 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const employees = [ /* Fake DataBase */ ];
+const server = app.listen(3000, () => {
+    port = server.address().port;
+    console.log(`server is running at http://localhost:${port}`);
+});
+
+const employees = [];
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
 async function verifyJWT(req, res, next) {
     const token = await req.headers['x-access-token'];
-    const index = blackList.findIndex(item => item === token);
+    const index = loggedOutUsers.findIndex(item => item === token);
     if (index !== -1) return res.status(401).end();
 
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
@@ -48,10 +53,18 @@ app.post('/login', (req, res) => {
     return res.status(401).end();
 });
 
-const blackList = [];
+const loggedOutUsers = [];
+
+// Logout
+app.post('/logout', verifyJWT, (req, res) => {
+    loggedOutUsers.push(req.headers['x-access-token']);
+    return res.end(JSON.stringify({
+        message: 'Desconectado com sucesso!'
+    }));
+});
 
 // Cadastrar funcionários
-app.post('/employees/registration', verifyJWT, (req, res) => {
+app.post('/employees/', verifyJWT, (req, res) => {
     const {
         id,
         first_name,
@@ -142,18 +155,4 @@ app.delete('/employees/:name', verifyJWT, (req, res) => {
     if (!deleteEmployee) return res.status(404).json('Funcionário não encontrado!');
 
     return res.json('Successfully deleted!');
-});
-
-// Logout
-app.post('/logout', verifyJWT, (req, res) => {
-    blackList.push(req.headers['x-access-token']);
-    return res.end(JSON.stringify({
-        message: 'Desconectado com sucesso!'
-    }));
-});
-
-// Server connection
-const server = app.listen(3000, () => {
-    port = server.address().port;
-    console.log(`server is running at http://localhost:${port}`);
 });
